@@ -1,3 +1,5 @@
+#include  "tree.h"
+
 double areaFunct(double *right, double *left, node *pointer, int &rightsize, int &leftsize)
 {
 	double tempArea;// holding place for area

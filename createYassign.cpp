@@ -1,3 +1,5 @@
+#include "tree.h"
+
 void assignValues (char *value, double *width, double *height, node *pointer, int size)
 {
 
