@@ -10,3 +10,7 @@ struct node
         node *left;
         node *right;
 };
+void assignValues (char *value, double *width, double *height, node *pointer, int size);
+void checkTosee(node *pointer);
+void createTree(node *pointer, int& size, char *tree);
+double areaFunct(double *right, double *left, node *pointer, int &rightsize, int &leftsize);
