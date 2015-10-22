@@ -9,31 +9,20 @@ double right[1000], width[20], height[20];
 double left[1000];
 int leftsize=0, rightsize=0;
 double area;
-char userInput='l';
-while(userInput!='A' && userInput != 'B' && userInput != 'C')
-{
-cout<<"What tree would you like to calculate the area: A, B, or C?";
-cin>>userInput;
-}
 	node *root=new node;
 	root->right=NULL;
 	root->left=NULL;
 for(int w=0; w<20; w++)
 {
-width[w]=sqrt(areaNode[w]*ratio[w]);
-height[w]=areaNode[w]/width[w]; 
+	width[w]=sqrt(areaNode[w]*ratio[w]);
+	height[w]=areaNode[w]/width[w];
 }
-switch (userInput)
-	{	case 'A':
-		{	int size = sizeof(treeA)-1;
-			createTree(root, size, treeA);
-			size=sizeof(treeA);
-			//cout<<endl;
-			assignValues(value, width, height, root,size );
-	//		checkTosee(root);
-		//	cout<<"peace";
-			area=areaFunct(right,left, root,rightsize, leftsize);
-			cout<<"AREA:"<<area;
+int size = sizeof(treeA)-1;
+createTree(root, size, treeA);
+size=sizeof(treeA);
+assignValues(value, width, height, root,size );
+area=areaFunct(right,left, root,rightsize, leftsize);
+cout<<"AREA of A:"<<area;
 			break;
 		}
 		case 'B':
