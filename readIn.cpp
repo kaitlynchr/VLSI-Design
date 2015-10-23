@@ -2,11 +2,11 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-void readin(vector <char> *value, vector <double> *width, vector <double> *height){
+void readin(vector<char>& value, vector<double>& width, vector<double>& height){
 	//char value[100];
 	//vector <char>  testValue;
 	//vector <double> testWidth, testHeight;
-	char testValue; 
+	char testValue;
 	double areaNode;
 	double ratio;
 	ifstream myfile;
@@ -18,9 +18,9 @@ void readin(vector <char> *value, vector <double> *width, vector <double> *heigh
 	if(mystring.size()<5)
 		continue;
 		istringstream buffer(mystring);
-		buffer>>testvalue>>areaNode>>ratio;
+		buffer>>testValue>>areaNode>>ratio;
 		value.push_back('V');
-		value.push_back(value);
+		value.push_back(testValue);
 		width.push_back(areaNode);
 		height.push_back(ratio);
 
@@ -31,7 +31,7 @@ void readin(vector <char> *value, vector <double> *width, vector <double> *heigh
                 width[w]=sqrt(width[w]*height[w]);
                 height[w]=height[w]/width[w];
         }
-	for ( int l=0; l<testWidth.size(); l++)
+	for ( int l=0; l<width.size(); l++)
 	{
 		cout<<value[2*l]<<" "<<value[2*l+1]<<" "<<width[l]<<" " <<height[l]<<endl;
 	}
