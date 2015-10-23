@@ -1,6 +1,6 @@
 #include  "tree.h"
 
-double areaFunct(double *right, double *left, node *pointer, int &rightsize, int &leftsize)
+double areaFunct(vector<double>& right, vector<double>& left, node *pointer)
 {
 	double tempArea;// holding place for area
 
@@ -15,77 +15,71 @@ double areaFunct(double *right, double *left, node *pointer, int &rightsize, int
 		return 0; //goes back to h or v so it can compare there and do calculation
 		}
 	//stores the widths and heights of the right side
-	//double TempRight[200];
-	double tempArray[10000];
+	vector<double> tempVector;
 	//always start by putting the heights and width in the right
-	int tempRight=0;
-	tempArea= areaFunct(right, left, pointer->right, rightsize, leftsize);
+	tempArea= areaFunct(right, left, pointer->right);
 	//stores the right values temporarily to protect change later down
-	for( int q=0; q<rightsize; q++)
+	for( int q=0; q<right.size(); q++)
 	{
-	tempArray[q]=right[q];
-	tempRight=rightsize;
+		tempVector.push_back(right[q];
 	}
-	tempArea=areaFunct(left, right, pointer->left, leftsize, rightsize); // goes left to get the height and widths, notice left and right are switched so that it really stores them in left
-	for(int w=0;w<tempRight; w++)
+	tempArea=areaFunct(left, right, pointer->left); // goes left to get the height and widths, notice left and right are switched so that it really stores them in left
+	right.clear();
+	for(int w=0;w<tempVector.size(); w++)
 	{
-		right[w]=tempArray[w];// puts the right side back 
-		rightsize=tempRight;
+		right.push_back(tempVector[w]);
 	}
-	//double tempArray[200];
-	int TempLocation=0;
-	for(int i=0; i < rightsize; i=i+2) // for loop to go through the right values
+	tempVector.clear(); 
+	//int TempLocation=0;
+	for(int i=0; i < right.size(); i=i+2) // for loop to go through the right values
 	{
-		for(int j=0; j< leftsize;j=j+2) //for loop to go through the left values
+		for(int j=0; j< left.size();j=j+2) //for loop to go through the left values
 		{
 			if(pointer->key_value == 'H')//checks to see if you need to keep width or height
 			{
 				if(right[i]>left[j]) //stores the greater width(since heights are added )
 				{
-					tempArray[TempLocation]=right[i];
+					tempVector.push_back(right[i]);
 				}
 				else
 				{
-					tempArray[TempLocation]=left[j];
+					tempVector.push_back(left[j]);
 				}
-				tempArray[TempLocation+1]=right[i+1]+left[j+1];//gets the height by adding them together (left and right
+				tempVector.push_back(right[i+1]+left[j+1]);//gets the height by adding them together (left and right
 			}
 			else
 			{
-          	              	tempArray[TempLocation]=right[i]+left[j];//adds widths
+          	              	tempVector.push_back(right[i]+left[j]);//adds widths
 				if(right[i+1]>left[j+1])
                                 {
-                                      tempArray[TempLocation+1]=right[i+1]; //gets the bigger height stored
+                                      tempVector.push_back(right[i+1]); //gets the bigger height stored
                                 }
                               	else
                                 {
-                                   tempArray[TempLocation+1]=left[j+1];
+                                   tempVector.push_back(left[j+1]);
                               	}
 			}
-			TempLocation=TempLocation+2;
 		}}
 		int r=2;
-		rightsize=0;
-		for(int l=0; l<TempLocation; l=l+2)
+		right.clear(); 
+		for(int l=0; l<tempVector.size(); l=l+2)
 		{
 			bool arrayTest=true;
-			for(int p=0; p<TempLocation; p=p+2)
+			for(int p=0; p<tempVector.size(); p=p+2)
 			{
-				if(tempArray[p]<=tempArray[l]&& tempArray[p+1]<=tempArray[l+1]&& l!=p)
+				if(tempVector[p]<=tempVector[l]&& tempVector[p+1]<=tempVector[l+1]&& l!=p)
 				{
 				arrayTest=false;
 				}//checks to see if it is one of the smallest
 			}
 			if(arrayTest)
 				{
-					right[rightsize]=tempArray[l];
-					right[rightsize+1]=tempArray[l+1]; //stores the smallest values in the arrays
-
-					rightsize+=2;
+					right.push_back(tempVector[l]);
+					right.push_back(tempVector[l+1]); //stores the smallest values in the arrays
 				}
 		}
 		tempArea=right[0]*right[1];//calculates 1st area
-		while(r<rightsize)
+		while(r<right.size())
 		{	double output=right[r]*right[r+1]; //calculates the other areas and checks to see whic is the
 			if(tempArea>output)
 			{tempArea=output;}
