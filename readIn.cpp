@@ -1,14 +1,13 @@
-#include <iostream>
+#include "tree.h"
 #include <fstream>
 #include <sstream>
 #include <string>
-using namespace std;
-
-int main(){
-	char value[100];
-	double width[100];
-	double height[100];
-	char temp;
+void readin(char *value, double *width, double *height){
+	//char value[100];
+	vector <char>  testValue;
+	vector <double> testWidth, testHeight;
+	double areaNode[100];
+	double ratio[100];
 	ifstream myfile;
 	myfile.open("input.txt"); //file in in paranthesis
 	int i=0;
@@ -18,12 +17,27 @@ int main(){
 	if(mystring.size()<5)
 		continue;
 		istringstream buffer(mystring);
-		buffer>>value[i]>>width[i]>>height[i];
-		cout<<value[i]<<" "<<width[i]<<" "<<height[i]<<endl;
+		buffer>>value[i]>>areaNode[i]>>ratio[i];
+		testValue.push_back('V');
+		testValue.push_back(value[i]);
+		//cout<<value[i]<<" "<<areaNode[i]<<" "<<ratio[i]<<endl;
+		//value[i+1]='V';
+		//i=i+2;
 		i++;
 
 	}
 	myfile.close();
-return 0;
+        for(int w=0; w<20; w++)
+        {
+                width[w]=sqrt(areaNode[w]*ratio[w]);
+                height[w]=areaNode[w]/width[w];
+		testWidth.push_back(width[w]);
+		testHeight.push_back(height[w]);
+        }
+	for ( int l=0; l<testWidth.size(); l++)
+	{
+		cout<<testValue[2*l]<<" "<<testValue[2*l+1]<<" "<<testWidth[l]<<" " <<testHeight[l]<<endl;
+	}
+return;
 }
 

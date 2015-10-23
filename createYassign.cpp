@@ -3,14 +3,13 @@
 void assignValues (char *value, double *width, double *height, node *pointer, int size)
 {
 
-	if(pointer->key_value == 'H' || pointer->key_value == 'V')
-	{assignValues(value, width, height, pointer->right, size);
-	assignValues(value,width,height, pointer->left, size);
-
+	if(pointer->key_value == 'H' || pointer->key_value == 'V')//checks to make sure it isn't a leaf
+	{assignValues(value, width, height, pointer->right, size); // goes right to find the leaf
+	assignValues(value,width,height, pointer->left, size); //goes left to find the leaf
 	}
 	else
 	{int i=0;
-		 while(pointer->key_value !=value[i] && i<size)
+		 while(pointer->key_value !=value[i] && i<size) // looks for the key value to find which values to store
 		{
 		i++;
 		}
@@ -20,7 +19,7 @@ void assignValues (char *value, double *width, double *height, node *pointer, in
 		}
 		else
 		{
-			pointer->height=height[i];
+			pointer->height=height[i]; //stores widths and heights
 			pointer->width=width[i];
 		}
 
@@ -29,7 +28,7 @@ void assignValues (char *value, double *width, double *height, node *pointer, in
 }
 void checkTosee(node *pointer)
 {
-	if(pointer->key_value == 'H' || pointer->key_value == 'V')
+	if(pointer->key_value == 'H' || pointer->key_value == 'V')//goes through the tree and prints the values to verify working correctly 
 	{checkTosee(pointer->right);
 	checkTosee(pointer->left);
 	}

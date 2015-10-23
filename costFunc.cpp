@@ -14,13 +14,13 @@ double areaFunct(double *right, double *left, node *pointer, int &rightsize, int
 			rightsize=4;
 		return 0; //goes back to h or v so it can compare there and do calculation
 		}
-	//stores the widths and heights of the right  ???
+	//stores the widths and heights of the right side
 	//double TempRight[200];
 	double tempArray[10000];
 	//always start by putting the heights and width in the right
 	int tempRight=0;
 	tempArea= areaFunct(right, left, pointer->right, rightsize, leftsize);
-	//
+	//stores the right values temporarily to protect change later down
 	for( int q=0; q<rightsize; q++)
 	{
 	tempArray[q]=right[q];
@@ -29,7 +29,7 @@ double areaFunct(double *right, double *left, node *pointer, int &rightsize, int
 	tempArea=areaFunct(left, right, pointer->left, leftsize, rightsize); // goes left to get the height and widths, notice left and right are switched so that it really stores them in left
 	for(int w=0;w<tempRight; w++)
 	{
-		right[w]=tempArray[w];
+		right[w]=tempArray[w];// puts the right side back 
 		rightsize=tempRight;
 	}
 	//double tempArray[200];
@@ -74,24 +74,22 @@ double areaFunct(double *right, double *left, node *pointer, int &rightsize, int
 				if(tempArray[p]<=tempArray[l]&& tempArray[p+1]<=tempArray[l+1]&& l!=p)
 				{
 				arrayTest=false;
-				}
+				}//checks to see if it is one of the smallest
 			}
 			if(arrayTest)
 				{
 					right[rightsize]=tempArray[l];
-					right[rightsize+1]=tempArray[l+1];
+					right[rightsize+1]=tempArray[l+1]; //stores the smallest values in the arrays
 
 					rightsize+=2;
 				}
 		}
 		tempArea=right[0]*right[1];//calculates 1st area
 		while(r<rightsize)
-		{	double output=right[r]*right[r+1]; //calculates the other areas and checks to see whic is the 
+		{	double output=right[r]*right[r+1]; //calculates the other areas and checks to see whic is the
 			if(tempArea>output)
 			{tempArea=output;}
-			//cout<<output<<endl;
 			r=r+2;
-
 		}
 
 	return tempArea;
