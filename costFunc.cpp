@@ -6,12 +6,11 @@ double areaFunct(vector<double>& right, vector<double>& left, node *pointer)
 
 		//base case for when tree is complete
 		if(pointer->key_value != 'H' && pointer->key_value != 'V')
-		{
-			right[0]=pointer->width; // here you store the weights to take back up and be used in the  compute area
-			right[1]=pointer->height;
-			right[2]=right[1];
-			right[3]=right[0];
-			rightsize=4;
+		{	right.clear();
+			right.push_back(pointer->width); // here you store the weights to take back up and be used in the  compute area
+			right.push_back(pointer->height);
+			right.push_back(right[1]);
+			right.push_back(right[0]);
 		return 0; //goes back to h or v so it can compare there and do calculation
 		}
 	//stores the widths and heights of the right side
@@ -21,7 +20,7 @@ double areaFunct(vector<double>& right, vector<double>& left, node *pointer)
 	//stores the right values temporarily to protect change later down
 	for( int q=0; q<right.size(); q++)
 	{
-		tempVector.push_back(right[q];
+		tempVector.push_back(right[q]);
 	}
 	tempArea=areaFunct(left, right, pointer->left); // goes left to get the height and widths, notice left and right are switched so that it really stores them in left
 	right.clear();
@@ -29,7 +28,7 @@ double areaFunct(vector<double>& right, vector<double>& left, node *pointer)
 	{
 		right.push_back(tempVector[w]);
 	}
-	tempVector.clear(); 
+	tempVector.clear();
 	//int TempLocation=0;
 	for(int i=0; i < right.size(); i=i+2) // for loop to go through the right values
 	{
@@ -56,12 +55,12 @@ double areaFunct(vector<double>& right, vector<double>& left, node *pointer)
                                 }
                               	else
                                 {
-                                   tempVector.push_back(left[j+1]);
+                                     tempVector.push_back(left[j+1]);
                               	}
 			}
 		}}
 		int r=2;
-		right.clear(); 
+		right.clear();
 		for(int l=0; l<tempVector.size(); l=l+2)
 		{
 			bool arrayTest=true;
