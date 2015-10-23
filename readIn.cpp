@@ -34,9 +34,14 @@ void readin(char *value, double *width, double *height){
 		testWidth.push_back(width[w]);
 		testHeight.push_back(height[w]);
         }
-	for ( int l=0; l<testWidth.size(); l++)
+/*	for ( int l=0; l<testWidth.size(); l++)
 	{
 		cout<<testValue[2*l]<<" "<<testValue[2*l+1]<<" "<<testWidth[l]<<" " <<testHeight[l]<<endl;
+	}*/
+	testValue.erase(testValue.end()-2);
+	for(int q=0; q<testValue.size(); q++)
+	{
+	cout<<testValue[q]<<" ";
 	}
 return;
 }
