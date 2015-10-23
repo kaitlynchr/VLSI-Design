@@ -10,8 +10,8 @@ struct node
         node *left;
         node *right;
 };
-void assignValues (char *value, double *width, double *height, node *pointer, int size);
+void assignValues (vector<char>& value, vector<double>& width, vector<double>& height, node *pointer);
 void checkTosee(node *pointer);
 void createTree(node *pointer, int& size, char *tree);
-double areaFunct(double *right, double *left, node *pointer, int &rightsize, int &leftsize);
+double areaFunct(vector<double>& right, vector<double>& left, node *pointer);
 void readin(vector<char>& value, vector<double>& width, vector<double>& height);
