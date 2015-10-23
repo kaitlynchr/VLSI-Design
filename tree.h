@@ -14,4 +14,4 @@ void assignValues (char *value, double *width, double *height, node *pointer, in
 void checkTosee(node *pointer);
 void createTree(node *pointer, int& size, char *tree);
 double areaFunct(double *right, double *left, node *pointer, int &rightsize, int &leftsize);
-void readin(char *value, double *width, double *height);
+void readin(void readin(vector <char> *value, vector <double> *width, vector <double> *height));
