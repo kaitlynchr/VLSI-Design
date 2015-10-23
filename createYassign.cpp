@@ -1,15 +1,15 @@
 #include "tree.h"
 
-void assignValues (char *value, double *width, double *height, node *pointer, int size)
+void assignValues (vector<char>& value, vector<double>& width, vector<double>& height, node *pointer)
 {
 
 	if(pointer->key_value == 'H' || pointer->key_value == 'V')//checks to make sure it isn't a leaf
-	{assignValues(value, width, height, pointer->right, size); // goes right to find the leaf
-	assignValues(value,width,height, pointer->left, size); //goes left to find the leaf
+	{assignValues(value, width, height, pointer->right); // goes right to find the leaf
+	assignValues(value,width,height, pointer->left); //goes left to find the leaf
 	}
 	else
 	{int i=0;
-		 while(pointer->key_value !=value[i] && i<size) // looks for the key value to find which values to store
+		 while(pointer->key_value !=value[i] && i<value.size()) // looks for the key value to find which values to store
 		{
 		i++;
 		}
