@@ -7,9 +7,9 @@ int main(){
 	//char value[]={'1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','i','j','k','l'};
 	//double areaNode[]={13.60, 3.69, 16.71, 1.87, 5.29, 2.06, 17.80, 4.35, 16.86, 1.96, 15.19, 11.20, 11.48, 10.61, 19.72, 19.37, 2.64, 7.22, 3.18, 10.35}; 
 	//double ratio[]={0.52, 0.30, 0.50,  0.35, 1.15, 0.70,  0.25, 0.55,  0.75, 1.07,  0.36,  1.88,  0.51,  0.25,  0.28,  0.42, 0.56, 0.45, 0.25,  0.45};
-	double right[1000], width[20], height[20];
-	double left[1000];
-	char value[20];
+	double right[1000],left[1000];
+	double <char> width, height;
+	vector <char> value;
 	int leftsize=0, rightsize=0;
 	double area;
 	readin(value, width, height);// reads in values from files 
