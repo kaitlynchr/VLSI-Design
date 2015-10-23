@@ -19,19 +19,19 @@ int main(){
 /*		int size = sizeof(treeA)-1;
 		createTree(root, size, treeA);
 		size=sizeof(treeA);
-		assignValues(value, width, height, root,size );
+		assignValues(value, width, height, root);
 		area=areaFunct(right,left, root,rightsize, leftsize);
 		cout<<"AREA of A:"<<area;
 		size = sizeof(treeB)-1;
 		createTree(root, size, treeB);
 		size=sizeof(treeB);
-		assignValues(value, width, height, root,size );
+		assignValues(value, width, height, root );
 		area=areaFunct(right,left, root, rightsize,leftsize);
 		cout<<"AREA of B:"<<area;
 		size = sizeof(treeC)-1;
 		createTree(root, size, treeC);
 		size=sizeof(treeC);
-		assignValues(value, width, height, root,size );
+		assignValues(value, width, height, root);
 		area=areaFunct(right,left, root, rightsize, leftsize);
 		cout<<"AREA of C:"<<area; */
 	return 0;
