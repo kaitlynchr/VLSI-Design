@@ -11,7 +11,10 @@ int main(){
 	vector <double> width, height;
 	vector <char> value, Polish;
 	cout<<value.size();
-	/*for(int z=0; z<value.size()-1; z++)
+	int size;
+	double area;
+	readin(value, width, height);// reads in values from files
+		for(int z=0; z<value.size()-1; z++)
 		{
 			Polish.push_back('V');
 			Polish.push_back(value[z]);
@@ -20,10 +23,7 @@ int main(){
 	for(int y=0; y<Polish.size(); y++)
 		{
 			cout<<Polish[y]<<" ";
-		}*/
-	int size;
-	double area;
-	readin(value, width, height);// reads in values from files
+		}
 	node *root=new node;//creates a node for the base of tree
 	root->right=NULL;
 	root->left=NULL;
