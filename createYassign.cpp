@@ -21,6 +21,7 @@ void assignValues (vector<char>& value, vector<double>& width, vector<double>& h
 		{
 			pointer->height=height[i]; //stores widths and heights
 			pointer->width=width[i];
+
 		}
 
 	}

@@ -15,7 +15,6 @@ void readin(vector<char>& value, vector<double>& width, vector<double>& height){
 		continue;
 		istringstream buffer(mystring);
 		buffer>>testValue>>areaNode>>ratio;
-		//value.push_back('V');
 		value.push_back(testValue);
 		width.push_back(areaNode);
 		height.push_back(ratio);
@@ -24,10 +23,11 @@ void readin(vector<char>& value, vector<double>& width, vector<double>& height){
 	myfile.close();
         for(int w=0; w<height.size(); w++)
         {
-                width[w]=sqrt(width[w]*height[w]);
-                height[w]=height[w]/width[w];
+		areaNode=width[w];
+          	width[w]=sqrt(areaNode*height[w]);
+		height[w]=areaNode/width[w];
+
         }
-//	value.erase(value.end()-2);
 return;
 }
 

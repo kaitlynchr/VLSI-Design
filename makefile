@@ -2,17 +2,21 @@
 test: main.o costFunc.o createYassign.o readIn.cpp
 	g++ -o test  main.o costFunc.o createYassign.o readIn.cpp
 
+debug: main.o costFunc.o createYassign.o readIn.cpp
+	g++ -g -o debug main.o costFunc.o createYassign.o readIn.cpp
+
 main.o: main.cpp
-	g++ -c main.cpp
+	g++ -c -g  main.cpp
 
 costFunc.o: costFunc.cpp
-	g++ -c costFunc.cpp
+	g++ -c -g costFunc.cpp
 
 creatYasign.o: createYassign.cpp
-	g++ -c createYassign.cpp
+	g++ -c -g createYassign.cpp
 
 readIn.o: readIn.cpp
-	g++ -c readIn.cpp
+	g++ -c -g readIn.cpp
 clean: 
 	rm *.o
 	rm test
+	rm debug

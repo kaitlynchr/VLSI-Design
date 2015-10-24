@@ -9,7 +9,18 @@ int main(){
 	//double ratio[]={0.52, 0.30, 0.50,  0.35, 1.15, 0.70,  0.25, 0.55,  0.75, 1.07,  0.36,  1.88,  0.51,  0.25,  0.28,  0.42, 0.56, 0.45, 0.25,  0.45};
 	vector <double> right, left;
 	vector <double> width, height;
-	vector <char> value;
+	vector <char> value, Polish;
+	cout<<value.size();
+	/*for(int z=0; z<value.size()-1; z++)
+		{
+			Polish.push_back('V');
+			Polish.push_back(value[z]);
+		}
+	Polish.push_back(value[value.size()-2]);
+	for(int y=0; y<Polish.size(); y++)
+		{
+			cout<<Polish[y]<<" ";
+		}*/
 	int size;
 	double area;
 	readin(value, width, height);// reads in values from files
