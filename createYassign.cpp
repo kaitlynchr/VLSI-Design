@@ -39,7 +39,7 @@ void checkTosee(node *pointer)
 	}
 return;
 }
-void createTree(node *pointer, int& size, char *tree)
+void createTree(node *pointer, int& size,vector<char> *tree)
 {
 //	cout<<tree[size];
 	pointer->key_value=tree[size];

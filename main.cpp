@@ -10,16 +10,16 @@ int main(){
 	vector <double> right, left;
 	vector <double> width, height;
 	vector <char> value, Polish;
-	cout<<value.size();
 	int size;
 	double area;
 	readin(value, width, height);// reads in values from files
-		for(int z=0; z<value.size()-1; z++)
+	Polish.push_back(value[0]);
+	for(int z=1; z<value.size(); z++)
 		{
-			Polish.push_back('V');
 			Polish.push_back(value[z]);
+			Polish.push_back('V');
 		}
-	Polish.push_back(value[value.size()-2]);
+
 	for(int y=0; y<Polish.size(); y++)
 		{
 			cout<<Polish[y]<<" ";
