@@ -16,4 +16,4 @@ void checkTosee(node *pointer);
 void createTree(node *pointer, int& size, vector<char>& tree);
 double areaFunct(vector<double>& right, vector<double>& left, node *pointer);
 void readin(vector<char>& value, vector<double>& width, vector<double>& height);
-void annealingFunc(vector<char>& Enot, vector<char>& value, vector<double>& right, vector<double>& left, node *pointer );
+void annealingFunc(vector<char>& Enot, vector<char>& value, vector<double>& width, vector<double>& height);
