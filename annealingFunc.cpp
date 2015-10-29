@@ -17,10 +17,10 @@ void annealingFunc(vector<char>& Enot, vector<char>& value, vector<double>& widt
 	root->left=NULL;
 	int size=newE.size()-1;
 	createTree(root,size , newE); //creates a tree to get the cost
-	size=newE.size()-1;
 	size=newE.size();
 	assignValues(value, width, height, root);
 	oldCost= areaFunct(right, left, root);
+	deleteTree(root);
 	srand(iseed);
 	while(((reject/mt)< .95) || (t>epsilon)) // checks to see if the temp is greater than epsilon, or if the reject criteria is greater than 95% to know to stop 
 	{
@@ -128,13 +128,10 @@ void annealingFunc(vector<char>& Enot, vector<char>& value, vector<double>& widt
 		root->left=NULL;
 		int size=newE.size()-1;
 		createTree(root,size , newE); //creates a tree to get the cost
-		size=newE.size()-1;
-		//createTree(root, size , Polish);
-		//size=sizeof(treeA);
 		size=newE.size();
 		assignValues(value, width, height, root);
-	//	checkTosee (root); 
 		costNew= areaFunct(right, left, root); //finds the cost of the area
+		deleteTree(root);
 		changeOfcost=costNew - oldCost;// checks the different in cost
 		double test= exp(-changeOfcost/t);
 		double random = (rand()%100)/100;
