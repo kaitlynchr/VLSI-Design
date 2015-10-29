@@ -11,7 +11,16 @@ void annealingFunc(vector<char>& Enot, vector<char>& value, vector<double>& widt
 	bool test=true;
 	vector<char> newE ,E, Best;
 	E=Enot, Best=Enot, newE=Enot;
-//compute old cost here
+	vector <double> right, left;
+	node *root=new node;//creates a node for the base of tree
+	root->right=NULL;
+	root->left=NULL;
+	int size=newE.size()-1;
+	createTree(root,size , newE); //creates a tree to get the cost
+	size=newE.size()-1;
+	size=newE.size();
+	assignValues(value, width, height, root);
+	oldCost= areaFunct(right, left, root);
 	srand(iseed);
 	while(((reject/mt)< .95) || (t>epsilon)) // checks to see if the temp is greater than epsilon, or if the reject criteria is greater than 95% to know to stop 
 	{
