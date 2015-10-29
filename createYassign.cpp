@@ -67,3 +67,17 @@ void createTree(node *pointer, int& size, vector<char>& tree)
 
 return;
 }
+void deleteTree(node *pointer)
+{
+	
+    	if(pointer->left->left==NULL && pointer->left->right==NULL )
+    	{ delete pointer->left; }
+    	else 
+    	{deleteTree(pointer->left);}
+    	if(pointer->right->left==NULL && pointer->right->right==NULL)
+    	{ delete pointer->right; }
+    	else
+        {deleteTree(pointer->right);}
+	delete pointer; 
+return;
+}
