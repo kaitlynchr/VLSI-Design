@@ -39,9 +39,9 @@ void checkTosee(node *pointer)
 	}
 return;
 }
-void createTree(node *pointer, int& size, vector<char> *tree, char)
+void createTree(node *pointer, int& size, vector<char>& tree)
 {
-	cout<<tree[size];
+//	cout<<tree[size];
 	pointer->key_value=tree[size];
         if(size == 0)
         {

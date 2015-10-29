@@ -20,20 +20,23 @@ int main(){
 			Polish.push_back('V');
 		}
 
-	for(int y=0; y<Polish.size(); y++)
-		{
-			cout<<Polish[y]<<" ";
-		}
+//	for(int y=0; y<Polish.size(); y++)
+//		{
+//			cout<<Polish[y]<<" ";
+//		}
 	node *root=new node;//creates a node for the base of tree
 	root->right=NULL;
 	root->left=NULL;
 	//size=sizeof(treeA)-1;
-	createTree(root,value.size(), value );
-/*	size=sizeof(treeA);
+	size=Polish.size()-1;
+	createTree(root, size , Polish);
+	//size=sizeof(treeA);
+	size=Polish.size();
 	assignValues(value, width, height, root);
+//	checkTosee (root); 
 	area=areaFunct(right,left, root);
 	cout<<"AREA of A:"<<area;
-	size = sizeof(treeB)-1;
+/*	size = sizeof(treeB)-1;
 	createTree(root, size, treeB);
 	size=sizeof(treeB);
 	assignValues(value, width, height, root );
@@ -44,7 +47,7 @@ int main(){
 	size=sizeof(treeC);
 	assignValues(value, width, height, root);
 	area=areaFunct(right,left, root);
-	cout<<"AREA of C:"<<area;*/
+	cout<<"AREA of C:"<<area; */
 	return 0;
 }
 
