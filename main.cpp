@@ -48,6 +48,10 @@ int main(){
 	assignValues(value, width, height, root);
 	area=areaFunct(right,left, root);
 	cout<<"AREA of C:"<<area; */
+
+
+	annealingFunc(Polish, value, vector<double>& right, vector<double>& left, node *pointer )
+
 	return 0;
 }
 

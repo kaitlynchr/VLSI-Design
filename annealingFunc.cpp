@@ -2,7 +2,7 @@
 #include <math.h> //exp
 #include <cstdlib>
 
-void annealingFunc.cpp (vector<char>& Enot, vector<char>& value, vector<double>& right, vector<double>& left, node *pointer )
+void annealingFunc(vector<char>& Enot, vector<char>& value, vector<double>& right, vector<double>& left, node *pointer )
 {
 	double  ratio=0.85, lamdatf=.005, P=.99, epsilon=.001, t0=2000, t, oldCost=0, costNew=0, changeOfcost=0;
 	int nmoves=10, iseed = 3, n=6, mt=0, uphill, reject=;

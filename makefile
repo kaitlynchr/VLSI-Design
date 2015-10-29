@@ -8,6 +8,9 @@ debug: main.o costFunc.o createYassign.o readIn.cpp
 main.o: main.cpp
 	g++ -c -g  main.cpp
 
+annealingFunc.o: annealingFunc.cpp
+	g++ -c -g annealingFunc.cpp
+ 
 costFunc.o: costFunc.cpp
 	g++ -c -g costFunc.cpp
 
