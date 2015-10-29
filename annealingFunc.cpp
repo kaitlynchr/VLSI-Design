@@ -2,7 +2,7 @@
 #include <math.h> //exp
 #include <cstdlib>
 
-void annealingFunc(vector<char>& Enot, vector<char>& value, vector<double>& right, vector<double>& left, node *pointer )
+void annealingFunc(vector<char>& Enot, vector<char>& value, vector<double>& width, vector<double>& height)
 {
 	double  ratio=0.85, lamdatf=.005, P=.99, epsilon=.001, t0=2000, t, oldCost=0, costNew=0, changeOfcost=0;
 	int nmoves=10, iseed = 3, n=6, mt=0, uphill, reject=;
@@ -80,8 +80,18 @@ void annealingFunc(vector<char>& Enot, vector<char>& value, vector<double>& righ
 						}
 			}
 		mt=mt+1; //increases move count
+		vector <double> right, left;
+		node *root=new node;//creates a node for the base of tree
+		root->right=NULL;
+		root->left=NULL;
 		createTree(root, Enot.size(), Enot); //creates a tree to get the cost
-		newCost= areaFunc(right, left, node *pointer); //finds the cost of the area
+		size=Polish.size()-1;
+		//createTree(root, size , Polish);
+		//size=sizeof(treeA);
+		size=Enot.size();
+		assignValues(value, width, height, root);
+	//	checkTosee (root); 
+		newCost= areaFunc(right, left, root); //finds the cost of the area
 		changeOfcost=newCost - oldCost;// checks the different in cost
 			if(changeOfcost<0 || random < exp(-changeOfcost/T ) // checks to see if the change is better or if it changes randomly 
 			{
