@@ -39,25 +39,25 @@ void checkTosee(node *pointer)
 	}
 return;
 }
-void createTree(node *pointer, int& size,vector<char> *tree)
+void createTree(node *pointer, int& size, vector<char> *tree, char)
 {
-//	cout<<tree[size];
+	cout<<tree[size];
 	pointer->key_value=tree[size];
         if(size == 0)
         {
-        return;
+	        return;
         }
         if  ( tree[size] != 'V' &&  tree[size] != 'H')
         {
-        return;
+      		return;
         }
         if (tree[size] == 'V' || tree[size] == 'H' ) //checks to see if it is going to be a number or horizontal or vertical
         {
-        pointer->right=new node;
-        pointer->right->right= NULL;
-        pointer->right->left = NULL;
-        size--;
-        createTree(pointer->right, size, tree); // goes to the right child for the next open spot
+       		pointer->right=new node;
+        	pointer->right->right= NULL;
+        	pointer->right->left = NULL;
+        	size--;
+        	createTree(pointer->right, size, tree); // goes to the right child for the next open spot
         }
         pointer->left=new node;
         pointer->left->left=NULL;

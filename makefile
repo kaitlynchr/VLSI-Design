@@ -1,9 +1,9 @@
 #make relationship file for the progam
-test: main.o costFunc.o createYassign.o readIn.cpp
-	g++ -o test  main.o costFunc.o createYassign.o readIn.cpp
+test: main.o costFunc.o createYassign.o readIn.cpp 
+	g++ -o test  main.o costFunc.o createYassign.o readIn.cpp 
 
-debug: main.o costFunc.o createYassign.o readIn.cpp
-	g++ -g -o debug main.o costFunc.o createYassign.o readIn.cpp
+debug: main.o costFunc.o createYassign.o readIn.cpp 
+	g++ -g -o debug main.o costFunc.o createYassign.o readIn.cpp 
 
 main.o: main.cpp
 	g++ -c -g  main.cpp
