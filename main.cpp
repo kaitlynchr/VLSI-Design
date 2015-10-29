@@ -49,7 +49,7 @@ int main(){
 	area=areaFunct(right,left, root);
 	cout<<"AREA of C:"<<area; */
 
-void annealingFunc(Polish, value, width,height)
+	annealingFunc(Polish, value, width,height);
 	return 0;
 }
 

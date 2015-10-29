@@ -1,49 +1,82 @@
 #include "tree.h"
-#include <math.h> //exp
+//#include <math.h> //exp
 #include <cstdlib>
 
 void annealingFunc(vector<char>& Enot, vector<char>& value, vector<double>& width, vector<double>& height)
 {
-	double  ratio=0.85, lamdatf=.005, P=.99, epsilon=.001, t0=2000, t, oldCost=0, costNew=0, changeOfcost=0;
-	int nmoves=10, iseed = 3, n=6, mt=0, uphill, reject=;
+	double BestCost, costOfbest, ratio=0.85, lamdatf=.005, P=.99, epsilon=.001, t0=2000, t, oldCost=0, costNew=0, changeOfcost=0;
+	int nmoves=10, iseed = 3, n=6, mt=12, uphill, reject, j=0, i=0, N;
+	N= n*nmoves;
 	t=t0;
 	bool test=true;
-	vector<char> E, Best;
-	Enot=E, Best=E;
+	vector<char> newE ,E, Best;
+	E=Enot, Best=Enot, newE=Enot;
+//compute old cost here
 	srand(iseed);
-	while((reject/mt)<.95 || (T>epsilon)) // checks to see if the temp is greater than epsilon, or if the reject criteria is greater than 95% to know to stop 
+	while(((reject/mt)< .95) || (t>epsilon)) // checks to see if the temp is greater than epsilon, or if the reject criteria is greater than 95% to know to stop 
 	{
 		mt=uphill=reject=0; // intializes everything to 0
-		i=rand()%Enot.size(); // gets the random number to choose which value to randomly move 
-		while(uphill < N || mt < 2*n) //checks to see if uphill and temp are good
+		i=rand()%newE.size(); // gets the random number to choose which value to randomly move 
+		while(uphill < N || mt < 2*N) //checks to see if uphill and temp are good
 			{
 			switch (rand()%3+1) // chooses a random number from 1 to 3 to choose a case
 				{
 					case 1:{
-						while(Enot[i] == 'V' || Enot[i] == 'H')// checks to make sure that the random value is an operand not an operator
-                                                {i++; if(Enot.size()== i}{i=0;}}//increments it if it is an operator
-						if(i+1 == Enot.size()){j=i-1;test=false;)//checks to make sure it isn't at end of the array, if so starts j decreasing
-						else{j=i+1;} //else it starts j increasing to find the next p
-						while(Enot[j] == 'V' || Enot[j] == 'H')// helps to fin the next opreand
-                                                {if(test){if(j+1 == Enot.size()){j=i-1;test=false;}else{j++;}else{j--;}}//finds it wheter it is is before or after the value
-						tempvalue = Enot[i]; //temp value
-						Enot[i]=Enot[j]; //stores it
-						Enot[j]=tempvalue // stores the other value
+						
+						while(newE[i] == 'V' || newE[i] == 'H')// checks to make sure that the random value is an operand not an operator
+                                                {
+							i++; 
+							if(newE.size()== i)
+								{
+									i=0;
+								}
+						}//increments it if it is an operator
+						if(i+1 == newE.size())
+							{
+								j=i-1;	
+								test=false;
+							}//checks to make sure it isn't at end of the array, if so starts j decreasing
+						else
+							{
+								j=i+1;
+							} //else it starts j increasing to find the next p
+						while(newE[j] == 'V' || newE[j] == 'H')// helps to fin the next opreand
+                                                {
+							if(test)
+							{
+								if(j+1 == newE.size())
+								{
+									j=i-1;
+									test=false;
+								}
+								else
+								{
+									j++;
+								}
+							}
+							else
+							{	
+								j--;
+							}
+						}//finds it wheter it is is before or after the value
+						char tempvalue = newE[i]; //temp value
+						newE[i]=newE[j]; //stores it
+						newE[j]=tempvalue; // stores the other value
 						//swap values
-						break;b//leaves case statement
+						break;//leaves case statement
 						}
 					case 2:{
-							while(Enot[i] != 'V' && Enot[i] != 'H')//checks to make sure that i find an operator
-							{i++; if(i == Enot.size()){i=0;}} //increases if it is an operand
-							while(Enot[i] == 'V' || Enot[i] == 'H') // keeps flipping for the line of v and h's 
+							while(newE[i] != 'V' && newE[i] != 'H')//checks to make sure that i find an operator
+							{i++; if(i == newE.size()){i=0;}} //increases if it is an operand
+							while(newE[i] == 'V' || newE[i] == 'H') // keeps flipping for the line of v and h's 
 							{
-								if(Enot[i] == 'V') // checks if its a v and changes it to h
+								if(newE[i] == 'V') // checks if its a v and changes it to h
 								{
-									Enot[i]='H';
+									newE[i]='H';
 								}
 								else  // else changes it to v since it was an H
 								{
-									Enot[i]='V';
+									newE[i]='V';
 								}
 								i++;//moves along the array
 							}
@@ -51,27 +84,27 @@ void annealingFunc(vector<char>& Enot, vector<char>& value, vector<double>& widt
 						}
 					case 3:
 						{
-							if(Enot.size()-1==i) // checks to see if it the last elment, if so it starts at the first of the array 
+							if(newE.size()-1==i) // checks to see if it the last elment, if so it starts at the first of the array 
 							{i=0;}
 							//looks for an operand and operator right next to each other to perform the m3 swap
-							while(((Enot[i]=='V' || Enot[i] == 'H')&&(Enot[i+1]=='V' || Enot[i+1] =='H')) || ((Enot[i]!='V' && Enot[i]!='H')&&(Enot[i+1]!='V' && Enot[i+1] != 'H'))
+							while(((newE[i]=='V' || newE[i] == 'H')&&(newE[i+1]=='V' || newE[i+1] =='H')) || ((newE[i]!='V' && newE[i]!='H')&&(newE[i+1]!='V' && newE[i+1] != 'H')))
                                                 	 {
-					`			i++;// moves to next element to check
-								if(i == Enot.size()-2) //checks to make sure we aren't on the last two values, if so starts it over at 0 
+								i++;// moves to next element to check
+								if(i == newE.size()-2) //checks to make sure we aren't on the last two values, if so starts it over at 0 
 								{i=0;}
 							 }
-							tempValue=Enot[i];// stores the value temporarily
-							Enot[i]=Enot[i+1];// stores the other value to swap
-							Enot[i+1]=tempValue; //finishes the swap
+							char tempValue=newE[i];// stores the value temporarily
+							newE[i]=newE[i+1];// stores the other value to swap
+							newE[i+1]=tempValue; //finishes the swap
 							int operators=0, operands=0;
 							test=true;
-							for(int q=0; q<Enot.size; q++) //balloting property 
+							for(int q=0; q<newE.size(); q++) //balloting property 
 							{
-								if(Enot[i] == 'V' || Enot[i] == 'H')
+								if(newE[i] == 'V' || newE[i] == 'H')
                                                         	{operands+=1;}
 								else
 								{operators+=1;}
-								if(operators=<operands) //checks to see that there are more operands than operators to ensure its valid
+								if(operators<=operands) //checks to see that there are more operands than operators to ensure its valid
 								{test=false;} //marks if its not valid
 							}
 							if(!test)
@@ -84,32 +117,39 @@ void annealingFunc(vector<char>& Enot, vector<char>& value, vector<double>& widt
 		node *root=new node;//creates a node for the base of tree
 		root->right=NULL;
 		root->left=NULL;
-		createTree(root, Enot.size(), Enot); //creates a tree to get the cost
-		size=Polish.size()-1;
+		int size=newE.size()-1;
+		createTree(root,size , newE); //creates a tree to get the cost
+		size=newE.size()-1;
 		//createTree(root, size , Polish);
 		//size=sizeof(treeA);
-		size=Enot.size();
+		size=newE.size();
 		assignValues(value, width, height, root);
 	//	checkTosee (root); 
-		newCost= areaFunc(right, left, root); //finds the cost of the area
-		changeOfcost=newCost - oldCost;// checks the different in cost
-			if(changeOfcost<0 || random < exp(-changeOfcost/T ) // checks to see if the change is better or if it changes randomly 
+		costNew= areaFunct(right, left, root); //finds the cost of the area
+		changeOfcost=costNew - oldCost;// checks the different in cost
+		double test= exp(-changeOfcost/t);
+		double random = (rand()%100)/100;
+			if(changeOfcost<0 || random < test ) // checks to see if the change is better or if it changes randomly 
 			{
 				if(changeOfcost < 0) // stores E as the new e since it was accepted
 				{
 					E=newE;
 				}
-				if(cost(E) < costOfbest)6
+				if(oldCost < costOfbest)
 				{
 					Best=E;
+					BestCost= oldCost;
 				}
-				uphill+=1//increases since it was an uphill movement
+				uphill+=1;//increases since it was an uphill movement
 			}
 			else
 			{
 					reject+=1; //rejects it because it isn't a good move 
 			}
+		oldCost=costNew;
+		t=lamdatf*t; 
 		}
 	}
+	cout<<"Best cost:"<<BestCost;
 	return;
 }
