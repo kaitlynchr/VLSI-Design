@@ -164,6 +164,7 @@ void annealingFunc(vector<char>& Enot, vector<char>& value, vector<double>& widt
 	int averageNumbers;
 	for(int m=0; m<1000; m++)
 	{
+
 		if(avgCost[m]>0)
 		{t0+=avgCost[m]; averageNumbers++;}
 	}
@@ -179,7 +180,7 @@ void annealingFunc(vector<char>& Enot, vector<char>& value, vector<double>& widt
 	//node *root=new node;//creates a node for the base of tree
 	root->right=NULL;
 	root->left=NULL;
-	size= newE.size();
+	size= newE.size()-1;
         createTree(root,size, newE); //creates a tree to get the cost
 	assignValues(value, width, height, root);
 	oldCost= areaFunct(right, left, root);
