@@ -1,11 +1,13 @@
 #include "tree.h"
+#include <iostream>
 //#include <math.h> //exp
 #include <cstdlib>
+using namespace std; 
 
-void annealingFunc(vector<char>& Enot, vector<char>& value, vector<double>& width, vector<double>& height)
-{
-	double BestCost, costOfbest, ratio=0.85, lamdatf=.95, P=.99, epsilon=.001, t0=2000, t, oldCost=0, costNew=0, changeOfcost=0;
+int main(){
+	double BestCost, ratio=0.85, lamdatf=.95, P=.99, epsilon=.001, t0=2000, t, oldCost=0, costNew=0, changeOfcost=0;
 	int nmoves=10, iseed = 3, n=6, mt=12, uphill, reject, j=0, i=0, N;
+	double* averageCosts [100];
 	n=Enot.size();
 	N= n*nmoves;
 	t=t0;
@@ -19,20 +21,13 @@ void annealingFunc(vector<char>& Enot, vector<char>& value, vector<double>& widt
 	root->left=NULL;
 	int size=newE.size()-1;
         createTree(root,size, newE); //creates a tree to get the cost
-	size=newE.size();
 	assignValues(value, width, height, root);
 	oldCost= areaFunct(right, left, root);
-	BestCost=oldCost;
 	deleteTree(root);
 	srand(iseed);
-	int count=0;
-	while(((reject/mt)< .95) && (t>epsilon)) // checks to see if the temp is greater than epsilon, or if the reject criteria is greater than 95% to know to stop 
+	for(int z=0; z<100; z++)
 	{
-		mt=uphill=reject=0; // intializes everything to 0
-		while(uphill < N && mt < 2*N) //checks to see if uphill and temp are good
-			{
-		//	i=newE.size()-1;
-			i=rand()%newE.size(); // gets the random number to choose which value to randomly move 
+		i=rand()%newE.size(); // gets the random number to choose which value to randomly move 
 			switch (rand()%3+1) // chooses a random number from 1 to 3 to choose a case
 		//	switch (3)	
 			{
@@ -151,47 +146,20 @@ void annealingFunc(vector<char>& Enot, vector<char>& value, vector<double>& widt
 							} // rejects it since its not proven
 							break; //leaves the case statemts
 						}
-			} count++;
-		mt=mt+1; //increases move count
+			}
 		vector <double> right, left;
 		node *root=new node;//creates a node for the base of tree
 		root->right=NULL;
 		root->left=NULL;
 		int size=newE.size()-1;
 		createTree(root,size, newE); //creates a tree to get the cost
-		size=newE.size();
 		assignValues(value, width, height, root);
 		costNew= areaFunct(right, left, root); //finds the cost of the area
 		deleteTree(root);
-		changeOfcost=costNew - oldCost;// checks the different in cost
-		double testVal= exp(-changeOfcost/t);
-		double random = rand()%100+1;
-		random=random/100; 
-			if(changeOfcost<0 || random < testVal ) // checks to see if the change is better or if it changes randomly 
-			{
-				if(changeOfcost > 0) // stores E as the new e since it was accepted
-				{
-					for(int r=0; r<Enot.size(); r++)
-                                        {E[r]=newE[r];}
-					uphill+=1;
-				}
-				if(costNew < BestCost)
-				{
+		averageCosts[z]=costNew - oldCost;// checks the different in cost
 		
-					for(int r=0; r<Enot.size(); r++)
-        				{Best[r]=newE[r];}
-					BestCost=costNew;
-				}
-			//	uphill+=1;//increases since it was an uphill movement
-			}
-			else
-			{
-					reject+=1; //rejects it because it isn't a good move 
-			}
-		oldCost=costNew;
-		}
-		t=lamdatf*t; 
+	
 	}
-	cout<<"Best cost:"<<BestCost;
-	return;
+
+	return 0;
 }
